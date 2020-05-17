@@ -85,7 +85,9 @@
 <p>Once you downloaded the JRE, make sure that your system knows its path.</p>
 <p>You can learn how to set Java path <a href="https://alexiyorlov.github.io/tutorials/change-java-path.html">here</a>. </p>
 <p>Same for JavaFX path - <a href="https://alexiyorlov.github.io/tutorials/install-javafx.html">here</a>. </p>
-<p>Launch the Bat jar with a following command: <b>java -jar --module-path $PATH_TO_FX --add-modules javafx.controls BAT.jar</b></p>
+<p>Launch the Bat jar with a following command: </p>
+<p>a) If on Linux: <b>java -jar --module-path $PATH_TO_FX --add-modules javafx.controls BAT.jar</b></p>
+<p>b) If on Windows: <b>java -jar --module-path %PATH_TO_FX% --add-modules javafx.controls BAT.jar</b></p>
 <p>You can create a short start script, of course.</p>
 
 <h2>Usage</h2>
