@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>BAT - another build tool</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<!-- Add your site or application content here -->
+<h1 class="middle">Introduction to BAT</h1>
+<p>Welcome. BAT (or "Bat") is an in-development experimental build tool for Java. It is designed for building new Java 9+ libraries and applications using the module system.</p>
+<P>It reuses the Maven mechanism for dependency resolution, though in a slightly different way.</P>
+<p>Bat build files are in Json format (Json 5 to be precise, but only new feature you can use is comments - other features will be implemented when
+  there will appear Java libraries for handling this format). Its properties may be ordered in any way.</p>
+<p>Bat is a GUI application. You can do regular tasks from it: build, run, package a Jar, create a native runtime image. Also it has Maven repository navigation controls. </p>
+<p>Bat is free software, but with closed code.</p>
+
+<h1 class="middle">Detailed overview</h1>
+<div>
+<img src="img/fresh-bat-interface.png" alt="Bat interface" class="float-left"> - Fresh Bat interface
+
+<ol class="inside-list">
+  <li>Maven artifact search field</li>
+  <li>List of results. Items can be double-clicked to navigate.</li>
+  <li>Active project directory</li>
+  <li>Directory selection button, which shows a selection dialog.</li>
+  <li>Configuration button, which makes Bat process the project file, resolve dependencies, and set up other necessary things.</li>
+  <li>Command and process output area.</li>
+  <li>Button to call <em>jlink</em> to create a native runtime image.</li>
+</ol>
+
+<p>Bat build/project file is called <em>project.json5</em>. An example of one:</p>
+<pre><code>
+  {
+    "groupId": "io.github.alexiyorlov",
+    "artifactId": "combinations",
+    "version": "0.0.1",
+    "source_dir": "src",
+    "output_dir": "classes",
+    "images": "images",
+    "main_class": "io.github.alexiyorlov/io/github/alexiyorlov/combinations/Combinations.java",
+    "dependencies": [
+      {
+        "groupId": "org.openjfx",
+        "artifactId": "javafx-controls",
+        "version": "14"
+      },
+      {
+        "groupId": "com.google.guava",
+        "artifactId": "guava",
+        "version": "29.0-jre"
+      }
+    ]
+  }
+</code></pre>
+
+<p>Group, artifact and version are specified as per Maven conventions. Other properties:</p>
+<ul class="inside-list">
+  <li>source_dir - source code directory</li>
+  <li>output_dir - compiled code directory</li>
+  <li>images - native image directory</li>
+  <li>main_class - main class reference (optional)</li>
+  <li>jar_dir - compiled jar directory</li>
+  <li>dependencies - list of Maven dependencies</li>
+</ul>
+</div>
+
+<h1 class="middle" style="clear: left">Starting</h1>
+
+<h2>Installation</h2>
+<p>Bat is a Java application, it requires Java 11 and JavaFX. Skip this section if you know how to install them.</p>
+<p>Once you downloaded the JRE, make sure that your system knows its path.</p>
+<p>You can learn how to set Java path <a href="https://alexiyorlov.github.io/tutorials/change-java-path.html">here</a>. </p>
+<p>Same for JavaFX path - <a href="https://alexiyorlov.github.io/tutorials/install-javafx.html">here</a>. </p>
+<p>Launch the Bat jar with a following command: </p>
+<p>a) If on Linux: <b>java -jar --module-path $PATH_TO_FX --add-modules javafx.controls BAT.jar</b></p>
+<p>b) If on Windows: <b>java -jar --module-path %PATH_TO_FX% --add-modules javafx.controls BAT.jar</b></p>
+<p>You can create a short start script, of course.</p>
+<p>Download BAT from <a href="https://github.com/AlexiyOrlov/bat/releases">here</a> (ignore "Source code" assets). </p>
+
+<h2>Usage</h2>
+<p>Select a project directory. Create a project.json5 file and fill in necessary properties, or press "Configure project" to make Bat create a stub. Once you set the group id and artifact id,
+press that button again to make Bat create directories and module-info file derived from the artifact and group ids.</p>
+<p>Specify necessary dependencies in a standard Maven way, and configure project again. Bat will try to resolve dependencies and download them to the local Maven.
+  If you don't specify the version of a dependency, then Bat will download a last "release" version of it. If the process goes wrong, you can interrupt it by pressing "Finish".</p>
+<p>You can use the Maven search field to find the artifacts. The list will show directory structure of the repository. You can navigate among directories by double-clicking;
+  right-clicking on the POM file will show the primary information about that artifact.</p>
+<P>You can monitor the console for details and any exceptions that happen.</P>
+<p>Once you've written some code, you can build it. If you specified the main class, you can also run it. Main class value should look like <i>module.name/package/name/MainClass.java</i>.</p>
+<p>"Build custom image" will create a runtime image of the application.</p>
+<p>That's it with the basic usage. Remember that when you make any changes in the project file, you must reconfigure the project.</p>
+
+<h1 class="middle">Further information and support</h1>
+<p>Issues can be reported <a href="https://bitbucket.org/Krosenut/bat/issues">here</a>. This tool needs testing in real world scenarios; my goal is to
+develop an independent and convenient to use build tool. </p>
+
+<p>All rights reserved, 2020.</p>
+
+<a href="support-the-project.html">If you want to support this project...</a>
+
+<script src="js/vendor/modernizr-3.8.0.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
