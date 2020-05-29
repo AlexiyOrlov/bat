@@ -44,22 +44,22 @@
 <p style="clear: left; padding-top: 2cm">Bat build/project file is called <em>project.json5</em>. An example of one:</p>
 <pre class="scrollable"><code>
   {
-    "groupId": "io.github.alexiyorlov",
-    "artifactId": "combinations",
+    "group_id": "io.github.alexiyorlov",
+    "artifact_id": "combinations",
     "version": "0.0.1",
     "source_dir": "src",
     "output_dir": "classes",
-    "images": "images",
+    "image_dir": "images",
     "main_class": "io.github.alexiyorlov/io/github/alexiyorlov/combinations/Combinations.java",
     "dependencies": [
       {
-        "groupId": "org.openjfx",
-        "artifactId": "javafx-controls",
+        "group_id": "org.openjfx",
+        "artifact_id": "javafx-controls",
         "version": "14"
       },
       {
-        "groupId": "com.google.guava",
-        "artifactId": "guava",
+        "group_id": "com.google.guava",
+        "artifact_id": "guava",
         "version": "29.0-jre"
       }
     ]
@@ -70,7 +70,7 @@
 <ul class="inside-list">
   <li>source_dir - source code directory</li>
   <li>output_dir - compiled code directory</li>
-  <li>images - native image directory</li>
+  <li>image_dir - native image directory</li>
   <li>main_class - main class reference (optional)</li>
   <li>jar_dir - compiled jar directory</li>
   <li>dependencies - list of Maven dependencies</li>
@@ -84,10 +84,10 @@
 <p>Once you downloaded the JRE, make sure that your system knows its path.</p>
 <p>You can learn how to set Java path <a href="https://alexiyorlov.github.io/tutorials/change-java-path.html">here</a>. </p>
 <p>Same for JavaFX path - <a href="https://alexiyorlov.github.io/tutorials/install-javafx.html">here</a>. </p>
-<p>Launch the Bat jar with a following command: </p>
+<p>Launch the Bat jar with a following command (or use the provided script): </p>
 <p>a) If on Linux: <b>java -jar --module-path $PATH_TO_FX --add-modules javafx.controls BAT.jar</b></p>
 <p>b) If on Windows: <b>java -jar --module-path %PATH_TO_FX% --add-modules javafx.controls BAT.jar</b></p>
-<p>You can create a short start script, of course.</p>
+<p>You can create a start script yourself, of course.</p>
 <p>Download BAT from <a href="https://github.com/AlexiyOrlov/bat/releases">here</a> (ignore "Source code" assets). </p>
 
 <h2>Usage</h2>
