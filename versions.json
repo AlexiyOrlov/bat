@@ -1,6 +1,16 @@
 {
   "history": [
     {
+      "version": "0.0.2",
+      "changes": [
+        "Target bytecode version is set in the project file instead of UI",
+        "Fixed compilation error when 'output_dir' is not set",
+        "Fixed 'test' dependencies being put on the module path",
+        "Changed artifact id and group id keys",
+        "Changed runtime image directory key"
+      ]
+    },
+    {
       "version": "0.0.1",
       "changes": [
         "Initial release"
