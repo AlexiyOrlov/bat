@@ -27,6 +27,10 @@ h1,h2,h3,h4,h5,h6{
   color: #e7c22e;
 }
 
+code{
+  color: #edf1f1;
+}
+
 .middle{
   text-align: center;
 }
