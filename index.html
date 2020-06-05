@@ -22,8 +22,7 @@
 <h1 class="middle">Introduction to BAT</h1>
 <p>Welcome. BAT (or "Bat") is an in-development experimental build tool for Java. It is designed for building new Java 9+ libraries and applications using the module system.</p>
 <P>It reuses the Maven mechanism for dependency resolution, though in a slightly different way.</P>
-<p>Bat build files are in Json format (Json 5 to be precise, but only new feature you can use is comments - other features will be implemented when
-  there will appear Java libraries for handling this format). Its properties may be ordered in any way.</p>
+<p>Bat build files are in JSON5 format. Its properties may be ordered in any way.</p>
 <p>Bat is a GUI application. You can do regular tasks from it: build, run, package a Jar, create a native runtime image. Also it has Maven repository navigation controls. </p>
 <p>Bat is free software, but with closed code.</p>
 
@@ -44,26 +43,32 @@
 <p style="clear: left; padding-top: 2cm">Bat build/project file is called <em>project.json5</em>. An example of one:</p>
 <pre class="scrollable"><code>
   {
-    "group_id": "io.github.alexiyorlov",
-    "artifact_id": "combinations",
-    "version": "0.0.1",
-    "source_dir": "src",
+    "group_id": "dev.buildtool",
+    "artifact_id": "bat",
+    "version": "0.1.0",
+    "source_dir": "src/main/java",
     "output_dir": "classes",
     "image_dir": "images",
-    "main_class": "io.github.alexiyorlov/io/github/alexiyorlov/combinations/Combinations.java",
+    "main_class": "dev.buildtool/dev.buildtool.bat.BAT",
+    target_bytecode_version: "11",
     "dependencies": [
       {
         "group_id": "org.openjfx",
         "artifact_id": "javafx-controls",
-        "version": "14"
+        "version": "11.0.2"
       },
       {
-        "group_id": "com.google.guava",
-        "artifact_id": "guava",
-        "version": "29.0-jre"
+        "group_id": "org.jsoup",
+        "artifact_id": "jsoup",
+        "version": "1.13.1"
+      },
+      {
+        group_id: "dev.buildtool",
+        artifact_id: "json-tools",
+        "version": "0.2.0"
       }
     ]
-  }
+  } 
 </code></pre>
 
 <p>Group, artifact and version are specified as per Maven conventions. Other properties:</p>
@@ -74,6 +79,7 @@
   <li>main_class - main class reference (optional)</li>
   <li>jar_dir - compiled jar directory</li>
   <li>dependencies - list of Maven dependencies</li>
+  <li>target_bytecode_version - bytecode/language level</li>
 </ul>
 </div>
 
@@ -99,7 +105,7 @@ press that button again to make Bat create directories and module-info file deri
   right-clicking on the POM file will show the primary information about that artifact.</p>
 <p>You can monitor the console for details and any exceptions that happen.</p>
 <p>Once you've written some code, you can build it. If you specified the main class, you can also run it. Main class value should look like:</p>
-<p class="scrollable"><code>module.name/package/name/MainClass.java</code></p>
+<p class="scrollable"><code>module.name/package.name.MainClass</code></p>
 <p>"Build custom image" will create a runtime image of the application.</p>
 <p>That's it with the basic usage. Remember that when you make any changes in the project file, you must reconfigure the project.</p>
 
@@ -109,7 +115,7 @@ develop an independent and convenient to use build tool. </p>
 
 <p>All rights reserved, 2020.</p>
 
-<a href="support-the-project.html">If you want to support this project...</a>
+If you want to <a href="support-the-project.html">support this project...</a>
 
 <script src="js/vendor/modernizr-3.8.0.min.js"></script>
 <!--suppress JSUnresolvedLibraryURL -->
