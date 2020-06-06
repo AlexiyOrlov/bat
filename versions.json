@@ -1,6 +1,14 @@
 {
   "history": [
     {
+      "version": "0.0.3",
+      "changes": [
+        "Changed form of main class name",
+        "Implemented conversion of non-modular Jars for image creation",
+        "Gained full JSON5 support"
+      ]
+    },
+    {
       "version": "0.0.2",
       "changes": [
         "Target bytecode version is set in the project file instead of UI",
